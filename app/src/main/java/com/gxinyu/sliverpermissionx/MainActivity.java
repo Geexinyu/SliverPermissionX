@@ -11,10 +11,10 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gxinyu.sliverpermission.Permission;
 import com.gxinyu.sliverpermission.RequestBuilder;
 import com.gxinyu.sliverpermission.RequestCallBack;
 import com.gxinyu.sliverpermission.SliverPermission;
+import static com.gxinyu.sliverpermission.PermissionKt.*;
 
 public class MainActivity extends AppCompatActivity implements RequestCallBack {
 
@@ -32,14 +32,14 @@ public class MainActivity extends AppCompatActivity implements RequestCallBack {
 
     public void camera(View view) {
         SliverPermission.with(this)
-                .permissions(new String[]{Permission.CAMERA})
+                .permissions(new String[]{CAMERA})
                 .apply();
     }
 
     public void location(View view) {
         SliverPermission.with(this)
                 .mode(RequestBuilder.CHAIN)
-                .permissions(Permission.GROUP_LOCATION)
+                .permissions(GROUP_LOCATION)
                 .callback(this)
                 .apply();
     }

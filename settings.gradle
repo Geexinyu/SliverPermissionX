@@ -1,3 +1,4 @@
+include ':sliverpermissionkt'
 include ':app'
 include ':SliverpermissionX'
 rootProject.name = "SliverPermissionX"

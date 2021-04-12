@@ -10,12 +10,14 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.Nullable;
 
-import com.gxinyu.sliverpermission.Permission;
+
 import com.gxinyu.sliverpermission.RequestBuilder;
 import com.gxinyu.sliverpermission.SliverPermission;
+
+import static com.gxinyu.sliverpermission.PermissionKt.CAMERA;
+import static com.gxinyu.sliverpermission.PermissionKt.GROUP_LOCATION;
 
 
 public class AppFragment extends Fragment {
@@ -69,13 +71,13 @@ public class AppFragment extends Fragment {
 
     public void camera() {
         SliverPermission.with(this)
-                .permissions(new String[]{Permission.CAMERA})
+                .permissions(new String[]{CAMERA})
                 .apply();
     }
 
     public void location() {
         SliverPermission.with(this)
-                .permissions(Permission.GROUP_LOCATION)
+                .permissions(GROUP_LOCATION)
                 .apply();
     }
 

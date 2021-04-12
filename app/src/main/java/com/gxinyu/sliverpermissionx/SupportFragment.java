@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.gxinyu.sliverpermission.Permission;
+import static com.gxinyu.sliverpermission.PermissionKt.*;
 import com.gxinyu.sliverpermission.RequestBuilder;
 import com.gxinyu.sliverpermission.SliverPermission;
 
@@ -69,13 +69,13 @@ public class SupportFragment extends Fragment {
 
     public void camera() {
         SliverPermission.with(this)
-                .permissions(new String[]{Permission.CAMERA})
+                .permissions(new String[]{CAMERA})
                 .apply();
     }
 
     public void location() {
         SliverPermission.with(this)
-                .permissions(Permission.GROUP_LOCATION)
+                .permissions(GROUP_LOCATION)
                 .apply();
     }
 
