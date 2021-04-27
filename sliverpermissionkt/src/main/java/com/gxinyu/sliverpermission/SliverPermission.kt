@@ -50,7 +50,7 @@ class SliverPermission private constructor() {
         }
 
         private fun check(context: Context?): Context {
-            check(Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            check(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             requireNotNull(context)//要求不能为空
             require(context is Activity) { "You context must be activity for apply permission!" }
             require(!context.isFinishing) { "You cannot start a load for a finishing activity" }

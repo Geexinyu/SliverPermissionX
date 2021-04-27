@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity
  * 后续吧fragment添加到集合中
  */
 class RequestRetriever {
+
     fun getRequestFragment(activity: Activity): RequestFragment {
         return getRequestFragment(activity.fragmentManager, null)
     }
@@ -41,11 +42,15 @@ class RequestRetriever {
 
     private fun getRequestFragment(
             fm: FragmentManager,
-            parentHint: Fragment?): RequestFragment {
-        var current: RequestFragment = fm.findFragmentByTag(FRAGMENT_TAG) as RequestFragment
-        if (current == null) {
-            current = RequestFragment()
-            current.setParentFragmentHint(parentHint)
+            parentHint: Fragment? = null): RequestFragment {
+        val findFragmentByTag = fm.findFragmentByTag(FRAGMENT_TAG)
+        val current = if (findFragmentByTag == null) {
+            RequestFragment()
+        } else {
+            findFragmentByTag as RequestFragment
+        }
+        if (!current.isAdded){
+            parentHint.let { current.setParentFragmentHint(parentHint) }
             fm.beginTransaction().add(current, FRAGMENT_TAG).commitAllowingStateLoss()
             fm.executePendingTransactions()
         }
@@ -54,11 +59,15 @@ class RequestRetriever {
 
     private fun getRequestSupportFragment(
             fm: androidx.fragment.app.FragmentManager,
-            parentHint: androidx.fragment.app.Fragment?): RequestSupportFragment {
-        var current: RequestSupportFragment = fm.findFragmentByTag(FRAGMENT_TAG) as RequestSupportFragment
-        if (current == null) {
-            current = RequestSupportFragment()
-            current.setParentFragmentHint(parentHint)
+            parentHint: androidx.fragment.app.Fragment? = null): RequestSupportFragment {
+        val findFragmentByTag = fm.findFragmentByTag(FRAGMENT_TAG)
+        val current = if (findFragmentByTag == null) {
+            RequestSupportFragment()
+        } else {
+            findFragmentByTag as RequestSupportFragment
+        }
+        if (!current.isAdded){
+            parentHint.let { current.setParentFragmentHint(parentHint) }
             fm.beginTransaction().add(current, FRAGMENT_TAG).commitAllowingStateLoss()
             fm.executePendingTransactions()
         }

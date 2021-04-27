@@ -70,7 +70,7 @@ class Request : RequestCallBack {
      */
     private fun checkVaild() {
         checkNotNull(requestPermissions)
-        check(requestPermissions?.size == 0)
+        check(requestPermissions?.size != 0)
         requestPermissions?.forEach {
             require(ALL_PERSSIONS.contains(it)) {
                 "$it permission you applied for is not in the dynamic permissions"
